@@ -12,17 +12,16 @@ import RegisterPage from './pages/RegisterPage';
 
 function App() {
 
-  // TODO: Come back to this later
-  // const {user} = useAuthContext(); 
+  const {user} = useAuthContext(); 
 
   return (
     <div className="App">
       <Router>
         <HeaderComponent></HeaderComponent>
         <Routes>
-          <Route path="/" element={<HomePage></HomePage>}></Route>
-          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-          <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
+          <Route path="/" element={user ? <HomePage></HomePage> : <Navigate to="/login"></Navigate>}></Route>
+          <Route path="/login" element={!user ? <LoginPage></LoginPage> : <Navigate to="/"></Navigate>}></Route>
+          <Route path="/register" element={!user ? <RegisterPage></RegisterPage> : <Navigate to="/"></Navigate>}></Route>
         </Routes>
       </Router>
     </div>
