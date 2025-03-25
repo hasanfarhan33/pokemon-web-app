@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jersey: ['"Jersey 10"', "serif"], 
+        press: ["'Press Start 2P'", "cursive"]
+      }
+    },
   },
   plugins: [],
 }

@@ -1,10 +1,12 @@
-const express = require("express"); 
-const connectDB = require("./config/db"); 
-require("dotenv").config(); 
+import express from 'express';  
+import connectDB from "./config/db.js";  
+import dotenv from "dotenv" 
 
+dotenv.config(); 
 
 // Importing Routes 
-const authRoutes = require("./routes/authRoutes")
+import authRoutes from "./routes/authRoutes.js"
+import pokeRoutes from "./routes/pokeRoutes.js"
 
 connectDB(); 
 
@@ -20,6 +22,7 @@ app.use((req, res, next) => {
 
 // Routes 
 app.use("/api/auth", authRoutes); 
+app.use("/api/pokeapi", pokeRoutes); 
 
 const PORT = process.env.PORT || 5000; 
 app.listen(PORT, ()=>console.log(`Connected & Running on Port: ${PORT}`))
