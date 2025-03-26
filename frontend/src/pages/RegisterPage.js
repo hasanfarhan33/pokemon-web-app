@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useRegister } from "../hooks/useRegister"
+import * as motion from "motion/react-client"
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState("")
@@ -42,7 +43,7 @@ const RegisterPage = () => {
                     <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter your password"className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 placeholder:text-xs"></input>
 
                     <div className="col-span-2">
-                        <button className="mt-8 w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition" disabled={isLoading}>Register</button>
+                        <motion.button className="mt-8 w-full bg-red-600 text-white py-2 rounded-lg font-semibold" disabled={isLoading} whileHover={{scale:1.05}} whileTap={{scale:0.95}}>Register</motion.button>
                     </div>
 
                     {error && <div className="errorMessage text-red-600 font-medium col-span-2">{error}</div>}
