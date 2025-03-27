@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken")
-const User = require("../models/userModel"); 
+import jwt from "jsonwebtoken"; 
+import User from "../models/userModel.js"
 
 
 const authMiddleware = async (req, res, next) => {
@@ -13,6 +13,10 @@ const authMiddleware = async (req, res, next) => {
 
     // Getting the token and making sure that it is valid 
     const token = authorization.split(" ")[1] 
+
+    if(!token) {
+        return res.status(401).json({error: "Token format is incorrect"}); 
+    }
 
     try {
         const {_id} = jwt.verify(token, process.env.SECRET)
@@ -30,4 +34,4 @@ const authMiddleware = async (req, res, next) => {
     }
 }
 
-module.exports = authMiddleware; 
+export default authMiddleware; 
