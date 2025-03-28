@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import * as motion from "motion/react-client"
+import { useUpdateFavorites } from '../hooks/useUpdateFavorites';
+import { useSetFavorites } from '../hooks/useSetFavorites';
 
 const HomePage = () => {
 
     const {user} = useAuthContext(); 
+    const {updateFavorites} = useUpdateFavorites(); 
+    const {setFavorites} = useSetFavorites(); 
 
     // For suggestions 
     const [search, setSearch] = useState("");
@@ -72,7 +76,7 @@ const HomePage = () => {
         }
     }; 
 
-
+ 
     const handleAddFavorite = async () => {
 
         // Making sure the user is logged in 
@@ -95,6 +99,10 @@ const HomePage = () => {
             
             if (!response.ok) throw new Error(data.message); 
 
+            const updatedFavorites = [...user.favorites, pokemonDetails.name]
+            updateFavorites(updatedFavorites); 
+            setFavorites(updatedFavorites); 
+
             setMessage("Successfully added to favorites!")
             
         } catch (error) {
@@ -102,6 +110,8 @@ const HomePage = () => {
             console.error("Error adding favorite:", error.message)   
         }
     }
+
+    const isFavorite = user.favorites && user.favorites.includes(pokemonDetails?.name)
 
     return (
     <main className='min-h-screen p-6 flex items-center flex-col font-press'>
@@ -148,8 +158,25 @@ const HomePage = () => {
 
                     <p>Evolves From:</p>
                     <p>{pokemonDetails.evolves_from.charAt(0).toUpperCase() + pokemonDetails.evolves_from.slice(1)}</p>
-
-                    <motion.button className='col-span-2 bg-red-600 mt-8 py-2 px-4 rounded-lg text-gray-100' whileHover={{scale: 1.05}} whileTap={{scale: 0.95}} onClick={handleAddFavorite}>Add to Favorites</motion.button>
+                    
+                    {/* Conditional button */}
+                    {!isFavorite ? (
+                            <motion.button 
+                                className='col-span-2 bg-red-600 mt-8 py-2 px-4 rounded-lg text-gray-100' 
+                                whileHover={{ scale: 1.05 }} 
+                                whileTap={{ scale: 0.95 }} 
+                                onClick={handleAddFavorite}
+                            >
+                                Add to Favorites
+                            </motion.button>
+                        ) : (
+                            <motion.button 
+                                className='col-span-2 bg-red-600 mt-8 py-2 px-4 rounded-lg text-gray-100 cursor-not-allowed' 
+                                disabled
+                            >
+                                Already in Favorites
+                            </motion.button>
+                        )}
                 </div>
 
                 {message && <p className='col-span-2 mt-4 text-center font-bold text-red-600 text-sm'>{message}</p>}

@@ -63,7 +63,7 @@ userSchema.statics.register = async function(first_name, last_name, email, passw
     const hash = await bcrypt.hash(password, salt); 
 
     // Creating the user in the DB 
-    const user = await this.create({first_name, last_name, email, password: hash}); 
+    const user = await this.create({first_name, last_name, email, password: hash, favorites: []}); 
 
     return user
 }

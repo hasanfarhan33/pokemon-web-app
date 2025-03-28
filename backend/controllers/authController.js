@@ -17,7 +17,8 @@ export const loginUser = async (req, res) => {
             first_name: user.first_name, 
             last_name: user.last_name, 
             email: user.email, 
-            token: token
+            token: token, 
+            favorites: user.favorites
         }) 
     } catch (error) {
         res.status(400).json({error: error.message}); 
@@ -39,7 +40,8 @@ export const registerUser = async (req, res) => {
             first_name: user.first_name,
             last_name: user.last_name, 
             email: user.email,
-            token: token
+            token: token, 
+            favorites: user.favorites
         }); 
     } catch (error) {
         res.status(400).json({error: error.message}); 
