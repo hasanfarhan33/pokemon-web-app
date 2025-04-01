@@ -4,6 +4,9 @@ import * as motion from "motion/react-client"
 import { useUpdateFavorites } from '../hooks/useUpdateFavorites';
 import { useSetFavorites } from '../hooks/useSetFavorites';
 
+// Loading Component 
+import LoadingComponent from '../components/LoadingComponent';
+
 const HomePage = () => {
 
     const {user} = useAuthContext(); 
@@ -128,6 +131,9 @@ const HomePage = () => {
                     ))}
                 </ul>
             )}
+
+            {/* Check Vault */}
+            <p className='mt-8 text-xs'>Check your favorite Pokemons in the <a className="hover:text-red-600 hover:underline transition" href='/vault'>Vault!</a></p>
         </div>
 
         {pokemonDetails && (
@@ -167,14 +173,14 @@ const HomePage = () => {
                                 whileTap={{ scale: 0.95 }} 
                                 onClick={handleAddFavorite}
                             >
-                                Add to Favorites
+                                Add to Vault
                             </motion.button>
                         ) : (
                             <motion.button 
                                 className='col-span-2 bg-red-600 mt-8 py-2 px-4 rounded-lg text-gray-100 cursor-not-allowed' 
                                 disabled
                             >
-                                Already in Favorites
+                                Already in Vault
                             </motion.button>
                         )}
                 </div>
@@ -182,11 +188,7 @@ const HomePage = () => {
                 {message && <p className='col-span-2 mt-4 text-center font-bold text-red-600 text-sm'>{message}</p>}
 
             </motion.div>
-        )}
-
-        {/* TODO: Add a div to browse favorite pokemons */}
-        
-        
+        )}        
     </main>
     )
 }

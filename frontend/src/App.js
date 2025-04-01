@@ -8,6 +8,7 @@ import HeaderComponent from './components/HeaderComponent';
 import HomePage from './pages/HomePage';
 import LoginPage from "./pages/LoginPage"; 
 import RegisterPage from './pages/RegisterPage';
+import VaultPage from "./pages/VaultPage"; 
 import FooterComponent from './components/FooterComponent';
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={user ? <HomePage></HomePage> : <Navigate to="/login"></Navigate>}></Route>
           <Route path="/login" element={!user ? <LoginPage></LoginPage> : <Navigate to="/"></Navigate>}></Route>
           <Route path="/register" element={!user ? <RegisterPage></RegisterPage> : <Navigate to="/"></Navigate>}></Route>
+          <Route path="/vault" element={user ? <VaultPage></VaultPage> : <Navigate to="/login"></Navigate>}></Route>
         </Routes>
         <FooterComponent></FooterComponent>
       </Router>

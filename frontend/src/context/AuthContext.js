@@ -79,7 +79,7 @@ export const AuthContextProvider = ({children}) => {
         dispatch({type: "UPDATE_FAVORITES", payload: newFavorites})
     }
 
-    console.log(`AuthContext State: ${state}`)
+    // console.log(`AuthContext State: ${state}`)
 
     return (
         <AuthContext.Provider value={{...state, dispatch, handleFavoritesUpdate}}>

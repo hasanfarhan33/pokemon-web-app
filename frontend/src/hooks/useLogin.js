@@ -18,7 +18,7 @@ export const useLogin = () => {
 
         const json = await response.json(); 
 
-        console.log("Login response: ", json); 
+        // console.log("Login response: ", json); 
 
         if(!response.ok) {
             setIsLoading(false)
