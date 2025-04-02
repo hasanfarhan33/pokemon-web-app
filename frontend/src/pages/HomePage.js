@@ -3,6 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import * as motion from "motion/react-client"
 import { useUpdateFavorites } from '../hooks/useUpdateFavorites';
 import { useSetFavorites } from '../hooks/useSetFavorites';
+import vaultImage from "../assets/pokeVault.png"
 
 // Loading Component 
 import LoadingComponent from '../components/LoadingComponent';
@@ -120,7 +121,7 @@ const HomePage = () => {
     <main className='min-h-screen p-6 flex items-center flex-col font-press'>
         <div className='formContainer bg-yellow-300 p-8 rounded-lg shadow-lg w-full max-w-md mb-8'>
             <h1 className="text-2xl font-extrabold">Hello, Trainer <span className='text-red-600'>{user.first_name}</span>!</h1>
-            <h3 className='text-lg font-medium mb-8'>What Pokemon Do You Want to Learn About?</h3>
+            <h3 className='text-lg font-medium mb-8'>What Pokémon Do You Want to Learn About?</h3>
             <input className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 placeholder:text-xs' placeholder='Search Pokemon...' onChange={handleChange} value={search}></input>   
 
             {/* Suggestions Dropdown */}
@@ -133,7 +134,7 @@ const HomePage = () => {
             )}
 
             {/* Check Vault */}
-            <p className='mt-8 text-xs'>Check your favorite Pokemons in the <a className="hover:text-red-600 hover:underline transition" href='/vault'>Vault!</a></p>
+            <p className='mt-8 text-xs'>Check your favorite Pokémon in the <a className="hover:text-red-600 hover:underline transition" href='/vault'>Vault!</a></p>
         </div>
 
         {pokemonDetails && (

@@ -18,7 +18,7 @@ const LoginPage = () => {
         <main className="min-h-screen p-6 flex items-center flex-col">
             <div className="text-center mb-8 font-press">
                 <h1 className="text-2xl text-black">PokéVault</h1>
-                <h3 className="text-md text-black">Search and store your favorite Pokémons!</h3>
+                <h3 className="text-md text-black">Search and store your favorite Pokémon!</h3>
             </div>
 
             {/* Form container */}

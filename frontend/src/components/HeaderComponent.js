@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import {useLogout} from "../hooks/useLogout"; 
 import { useAuthContext } from "../hooks/useAuthContext"; 
+import { useNavigate } from "react-router-dom";
 
 const HeaderComponent = () => {
 
 
     const {logout} = useLogout(); 
     const {user} = useAuthContext(); 
+    const navigate = useNavigate(); 
     
     const handleClick = () => {
         logout() 
@@ -16,7 +18,7 @@ const HeaderComponent = () => {
     <header className="headerComponent bg-red-600 px-6 py-2 shadow-md">
         <div className="container mx-auto flex justify-between items-center text-yellow-300">
             <div className="flex gap-6">
-                <h1 className="font-press text-xl font-bold text-gray-100">PokéVault</h1>
+                <h1 className="font-press text-xl font-bold text-gray-100 cursor-pointer" onClick={() => navigate("/", {replace: true})}>PokéVault</h1>
             </div>
             <nav>
                 {/* TODO: Remove the name? */}

@@ -81,3 +81,30 @@ export const getFavorites = async (req, res) => {
         return res.status(500).json({error: error.message}); 
     }
 }
+
+export const removePokemon = async (req, res) => {
+    try {
+        const {pokemonName, userId} = req.params; 
+
+        const user = await User.findById(userId); 
+        if(!user) {
+            return res.status(404).json({message: "User not found"})
+        }
+
+        // If pokemon doesn't exist in the array
+        if (!user.favorites.includes(pokemonName)) {
+            return res.status(404).json({message: "Pokemon doesn't exist in the favorites array"})
+        }
+                
+        user.favorites = user.favorites.filter(pokemon => pokemon !== pokemonName); 
+
+        await user.save(); 
+
+        res.status(200).json({message: "Pokemon removed successfully", favorites: user.favorites})
+
+
+    } catch (error) {
+        console.error(`Could not remove pokemon: ${error.message}`)
+        return res.status(500).json({error: error.message})
+    }
+}
