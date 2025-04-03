@@ -1,10 +1,10 @@
 # PokeVault
 
-Greetings! If you love Pokemon then you have come to the right place.
+Greetings! If you love Pokémon then you have come to the right place.
 
 ![Alt Text](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWRvd2Z5bHZyNG5xM3VhcTlwZTIxNXBzc3Nhdm0wMm5hMWVxand0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xx0JzzsBXzcMK542tx/giphy.gif)
 
-PokeVault is a full-stack MERN web application that allows users to log in, search for Pokemon, and save their favorite Pokemon. The app provides a sleek, interactive UI with authentication and persistent storage for user favorites.
+PokeVault is a full-stack MERN web application that allows users to log in, search for Pokémon, and save their favorite Pokémon. The app provides a sleek, interactive UI with authentication and persistent storage for user favorites.
 
 ## Features
 
